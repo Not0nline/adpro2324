@@ -9,12 +9,12 @@ import java.util.*;
 public class ProductRepository {
     private List<Product> productData = new ArrayList<>();
 
-    private Product create(Product product) {
+    public Product create(Product product) {
         productData.add(product);
         return product;
     }
 
-    private Iterator<Product> findAll() {
+    public Iterator<Product> findAll() {
         return productData.iterator();
     } 
 }
