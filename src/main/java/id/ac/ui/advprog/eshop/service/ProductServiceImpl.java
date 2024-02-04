@@ -10,6 +10,7 @@ import java.util.*;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
     
     @Autowired
     private ProductRepository productRepository;
@@ -18,6 +19,11 @@ public class ProductServiceImpl implements ProductService {
     public Product create(Product product) {
         productRepository.create(product);
         return product;
+    }
+
+    @Override
+    public boolean delete(String productId) {
+        return productRepository.delete(productId);
     }
 
     @Override
