@@ -34,6 +34,24 @@ public class ProductController {
         return "redirect:list";
     }
 
+    @RequestMapping(value="/product/edit/{id}", method = RequestMethod.GET)
+    public String editProductReq(Model model, @PathVariable("id") String productId) {
+        try {
+            Product product = service.getProduct(productId);
+            model.addAttribute("product", product);
+            return "editProduct";
+        } catch (Exception e) {
+            return "redirect:../list";
+        }
+    }
+
+    @PostMapping(value="product/edit/{id}")
+    public String editProductPost(@ModelAttribute Product product, Model model, @PathVariable("id") String productId) {
+        product.setProductId(productId);
+        service.edit(product);
+        return "redirect:../list";
+    }
+
     @GetMapping("/product/delete/{idDelete}")
     public String deleteProduct(Model model, @PathVariable String idDelete) {
         service.delete(idDelete);

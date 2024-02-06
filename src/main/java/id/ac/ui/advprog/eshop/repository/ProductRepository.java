@@ -3,6 +3,7 @@ package id.ac.ui.advprog.eshop.repository;
 import id.ac.ui.advprog.eshop.model.Product;
 import org.springframework.stereotype.Repository;
 
+import javax.management.openmbean.InvalidKeyException;
 import java.util.*;
 
 @Repository
@@ -24,7 +25,17 @@ public class ProductRepository {
         productData.remove(index);
         return true;
     }
-    
+
+    public boolean edit(Product product) {
+        int index = find(product.getProductId());
+        if (index == -1) {
+            return false;
+        }
+        Product currProduct = productData.get(index);
+        currProduct.setProductName(product.getProductName());
+        currProduct.setProductQuantity(product.getProductQuantity());
+        return true;
+    }
 
     public Iterator<Product> findAll() {
         return productData.iterator();
@@ -39,5 +50,13 @@ public class ProductRepository {
             index += 1;
         }
         return -1;
+    }
+
+    public Product getProduct(String productId) throws InvalidKeyException {
+        int index=find(productId);
+        if (index==-1) throw new InvalidKeyException();
+        else {
+            return productData.get(index);
+        }
     }
 }
