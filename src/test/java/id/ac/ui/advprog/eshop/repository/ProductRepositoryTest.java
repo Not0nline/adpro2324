@@ -1,4 +1,4 @@
-package test.java.id.ac.ui.advprog.eshop.repository;
+package id.ac.ui.advprog.eshop.repository;
 import id.ac.ui.advprog.eshop.model.Product;
 import id.ac.ui.advprog.eshop.repository.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
