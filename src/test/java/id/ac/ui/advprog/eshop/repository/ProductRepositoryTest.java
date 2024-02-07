@@ -72,4 +72,73 @@ public class ProductRepositoryTest {
         assertFalse(productIterator.hasNext());
     }
 
+    @Test
+    void testCreateAndDelete(){
+        Iterator<Product> productIterator = productRepository.findAll();
+
+        Product product = createAndSaveProduct("Sampo Cap Bambang","eb558e9f-1c39-460e-8860-71af6af63bd6",100);
+
+
+        assertTrue(productIterator.hasNext());
+        productRepository.delete("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertFalse(productIterator.hasNext());
+    }
+
+    @Test
+    void testCreateAndEdit(){
+        // Initializing first object
+        Product product1 = createAndSaveProduct("Sampo Cap Bambang","eb558e9f-1c39-460e-8860-71af6af63bd6",100);
+
+        // Object with same id different attribute
+        Product product2 = createProduct("Sampo Cap Bengbeng","eb558e9f-1c39-460e-8860-71af6af63bd6",200);
+
+        productRepository.edit(product2);
+
+        assertEquals(200, product1.getProductQuantity());
+        assertEquals("Sampo Cap Bengbeng", product1.getProductName());
+    }
+
+    @Test
+    void testCreateEditDelete(){
+        Iterator<Product> productIterator = productRepository.findAll();
+
+        // Initializing first object
+        Product product1 = createAndSaveProduct("Sampo Cap Bambang","eb558e9f-1c39-460e-8860-71af6af63bd6",100);
+
+        // Object with same id different attribute
+        Product product2 = createProduct("Sampo Cap Bengbeng","eb558e9f-1c39-460e-8860-71af6af63bd6",200);
+
+        productRepository.edit(product2);
+
+        assertEquals(200, product1.getProductQuantity());
+        assertEquals("Sampo Cap Bengbeng", product1.getProductName());
+
+        productRepository.delete("eb558e9f-1c39-460e-8860-71af6af63bd6");
+        assertFalse(productIterator.hasNext());
+    }
+
+    @Test
+    void testEditIfNotFound(){
+        Product product1 = createAndSaveProduct("Sampo Cap Bambang","eb558e9f-1c39-460e-8860-71af6af63bd6",100);
+
+        // Object with same id different attribute
+        Product product2 = createProduct("Sampo Cap Bengbeng","idBedaDikit",200);
+
+        productRepository.edit(product2);
+
+        assertNotEquals(200, product1.getProductQuantity());
+        assertNotEquals("Sampo Cap Bengbeng", product1.getProductName());
+    }
+
+    @Test
+    void testDeleteIfNotFound(){
+        Iterator<Product> productIterator = productRepository.findAll();
+
+        Product product1 = createAndSaveProduct("Sampo Cap Bambang","eb558e9f-1c39-460e-8860-71af6af63bd6",100);
+
+        productRepository.delete("-");
+        assertTrue(productIterator.hasNext());
+
+    }
+
 }
