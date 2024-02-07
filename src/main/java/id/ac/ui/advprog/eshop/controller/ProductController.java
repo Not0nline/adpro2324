@@ -16,8 +16,8 @@ public class ProductController {
     private ProductService service;
 
     @GetMapping("")
-    public String main(Model model) {
-        return "main";
+    public String HomePage(Model model) {
+        return "homePage";
     }
 
 
