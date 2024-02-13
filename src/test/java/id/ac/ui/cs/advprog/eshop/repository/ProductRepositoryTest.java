@@ -1,6 +1,5 @@
-package id.ac.ui.advprog.eshop.repository;
-import id.ac.ui.advprog.eshop.model.Product;
-import id.ac.ui.advprog.eshop.repository.ProductRepository;
+package id.ac.ui.cs.advprog.eshop.repository;
+import id.ac.ui.cs.advprog.eshop.model.Product;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -8,7 +7,6 @@ import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Iterator;
-import java.util.Random;
 
 import static org.junit.jupiter.api.Assertions.*;
 
