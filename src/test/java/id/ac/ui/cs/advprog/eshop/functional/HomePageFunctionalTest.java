@@ -1,6 +1,5 @@
-package id.ac.ui.advprog.eshop.functional;
+package id.ac.ui.cs.advprog.eshop.functional;
 
-import id.ac.ui.advprog.eshop.repository.ProductRepository;
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
