@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import javax.management.openmbean.InvalidKeyException;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -137,6 +138,28 @@ public class ProductRepositoryTest {
         productRepository.delete("-");
         assertTrue(productIterator.hasNext());
 
+    }
+
+    @Test
+    void testCreateGet(){
+        Product product1 = createAndSaveProduct("Sampo Cap Bambang","eb558e9f-1c39-460e-8860-71af6af63bd6",100);
+        Product result = productRepository.getProduct(product1.getProductId());
+        assertEquals("eb558e9f-1c39-460e-8860-71af6af63bd6", result.getProductId());
+
+    }
+
+    @Test
+    public void testGetProductGadapet() {
+
+        // Test getting the product
+        try {
+            Product retrievedProduct = productRepository.getProduct("idGaada");
+        } catch (InvalidKeyException e) {
+//            fail("Test failed due to InvalidKeyException");
+        }
+
+        // Test getting a product that doesn't exist
+        assertThrows(InvalidKeyException.class, () -> productRepository.getProduct("nonexistentProduct"));
     }
 
 }
