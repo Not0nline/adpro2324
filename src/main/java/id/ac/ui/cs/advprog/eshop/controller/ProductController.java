@@ -17,7 +17,7 @@ public class ProductController {
 
     @GetMapping("")
     public String HomePage(Model model) {
-        return "homePage";
+        return "HomePage";
     }
 
 
@@ -25,7 +25,7 @@ public class ProductController {
     public String createProductPage(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
-        return "createProduct";
+        return "CreateProduct";
     }
 
     @PostMapping("/product/create")
@@ -35,19 +35,19 @@ public class ProductController {
     }
 
     @RequestMapping(value="/product/edit/{id}", method = RequestMethod.GET)
-    public String editProductReq(Model model, @PathVariable("id") String productId) {
-        try {
+    public String editProductPage(Model model, @PathVariable("id") String productId){
+        try{
             Product product = service.getProduct(productId);
             model.addAttribute("product", product);
-            return "editProduct";
-        } catch (Exception e) {
+            return "EditProduct";
+        }catch (Exception e){
             return "redirect:../list";
         }
     }
 
-    @PostMapping(value="product/edit/{id}")
-    public String editProductPost(@ModelAttribute Product product, Model model, @PathVariable("id") String productId) {
-        product.setProductId(productId);
+    @PutMapping(value="/product/edit/{id}")
+    public String editProductPost(@ModelAttribute("product") Product product, Model model, @PathVariable("id") String productId){
+        product.setProductId(productId); // Reasoning: After posted by form, id becomes null
         service.edit(product);
         return "redirect:../list";
     }
@@ -64,6 +64,6 @@ public class ProductController {
     public String productListPage(Model model) {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
-        return "productList";
+        return "ProductList";
     }
 }
