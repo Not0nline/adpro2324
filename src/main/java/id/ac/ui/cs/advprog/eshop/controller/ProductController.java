@@ -10,31 +10,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
+@RequestMapping("/product")
 public class ProductController {
     
     @Autowired
     private ProductService service;
 
-    @GetMapping("")
-    public String HomePage(Model model) {
-        return "HomePage";
-    }
 
-
-    @GetMapping("/product/create")
+    @GetMapping("/create")
     public String createProductPage(Model model) {
         Product product = new Product();
         model.addAttribute("product", product);
         return "CreateProduct";
     }
 
-    @PostMapping("/product/create")
+    @PostMapping("/create")
     public String createProductPost(@ModelAttribute Product product, Model model) {
         service.create(product);
         return "redirect:list";
     }
 
-    @RequestMapping(value="/product/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value="/edit/{id}", method = RequestMethod.GET)
     public String editProductPage(Model model, @PathVariable("id") String productId){
         try{
             Product product = service.getProduct(productId);
@@ -45,22 +41,21 @@ public class ProductController {
         }
     }
 
-    @PutMapping(value="/product/edit/{id}")
+    @PutMapping(value="/edit/{id}")
     public String editProductPost(@ModelAttribute("product") Product product, Model model, @PathVariable("id") String productId){
         product.setProductId(productId); // Reasoning: After posted by form, id becomes null
         service.edit(product);
         return "redirect:../list";
     }
 
-    @GetMapping("/product/delete/{idDelete}")
+    @GetMapping("/delete/{idDelete}")
     public String deleteProduct(Model model, @PathVariable String idDelete) {
         service.delete(idDelete);
         return "redirect:../list";
     }
 
 
-
-    @GetMapping("/product/list")
+    @GetMapping("/list")
     public String productListPage(Model model) {
         List<Product> allProducts = service.findAll();
         model.addAttribute("products", allProducts);
