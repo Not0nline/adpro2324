@@ -1,5 +1,6 @@
 package id.ac.ui.cs.advprog.eshop;
 
+import id.ac.ui.cs.advprog.eshop.controller.ProductController;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.beans.factory.annotation.Autowired;
