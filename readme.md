@@ -26,10 +26,12 @@
 2. Saya rasa, implementasi yang telah dilakukan sudah sesuai dengan definisi CI/CD. Alasannya adalah, setiap kali ada commit baru yang di push ke branch tertentu, GitHub akan menjalankan Actions untuk workflow yang ada di branch tersebut, seperti PMD dan CI untuk module 2 ini. Untuk branch main, ada workflow tambahan yaitu scorecard dan deployment melalui koyeb. Jika ada branch yang di merge ke main, maka GitHub Actions akan mengulangi workflow yang ada di main sehingga setiap perubahan pada commit akan selalu di verifikasi secara otomatis oleh GitHub Actions. Selain itu, untuk deployment dari web juga sudah di atur agar dapat redeploy secara otomatis setiap ada perubahan pada branch main. Karena banyak proses yang di otomatisasi, maka saya rasa definisi CI/CD untuk module 2 ini sudah terpenuhi.
 
 <h1>Week 3</h1>
-1. SOLID principles that i have applied in my code:
-- Single Responsibility Principle: memisahkan class Controller menjadi file-file yang berbeda, satu file untuk satu class, agar file Program hanya jadi controller untuk mapping path website. 
-- Interface Segregation Principle: memisahkan interface class untuk CarService dan ProductService, agar satu class hanya punya method yang relevan dan sesuai dengan kelasnya. 
+
+1. SOLID principles that i have applied in my code: <br>
+- Single Responsibility Principle: memisahkan class Controller menjadi file-file yang berbeda, satu file untuk satu class, agar file Program hanya jadi controller untuk mapping path website. <br>
+- Interface Segregation Principle: memisahkan interface class untuk CarService dan ProductService, agar satu class hanya punya method yang relevan dan sesuai dengan kelasnya. <br>
 - Dependency Inversion Principle: memakai AutoWired untuk CarController dan ProductController ke CarService/ProductService, bukan ke class implementasinya, agar perubahan service tidak bikin bug karena controller cuma tergantung dari interface classnya.
+<br>
 
 2. The benefits of using SOLID principles in my code:
 - Lebih mudah untuk memodifikasi class karena dependensi lebih sedikit.<br>
