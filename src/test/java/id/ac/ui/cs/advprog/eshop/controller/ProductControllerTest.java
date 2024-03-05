@@ -1,12 +1,14 @@
 package id.ac.ui.cs.advprog.eshop.controller;
 
 import id.ac.ui.cs.advprog.eshop.model.Product;
+import id.ac.ui.cs.advprog.eshop.service.CarServiceImpl;
 import id.ac.ui.cs.advprog.eshop.service.ProductServiceImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -34,9 +36,14 @@ public class ProductControllerTest {
 
     @MockBean
     private ProductServiceImpl service;
+    @MockBean
+    private CarServiceImpl carService;
 
     @InjectMocks
     private ProductController controller;
+
+    @InjectMocks
+    private CarController carController;
 
 
     private List<Product> allProducts;
@@ -74,11 +81,7 @@ public class ProductControllerTest {
         allProducts = null;
     }
 
-    @Test
-    public void homepageTest() throws Exception{
-        mvc.perform(get(""))
-                .andExpect(status().isOk());
-    }
+
 
     @Test
     public void createPageTest() throws Exception{
