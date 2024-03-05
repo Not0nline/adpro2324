@@ -24,6 +24,9 @@ public class ProductServiceTest {
     ProductRepository productRepository;
 
     @InjectMocks
+    OrderServiceImpl orderService;
+
+    @InjectMocks
     ProductServiceImpl service;
 
     private List<Product> allProducts;
