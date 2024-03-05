@@ -54,7 +54,7 @@ public class OrderTest {
     @Test
     void testOrderCreateOrderSuccessfulStatus(){
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b", this.products,
-                1708560000L, "Safira Sudarajat", OrderStatus.SUCCESS.getValue());
+                1708560000L, "Safira Sudarajat", "SUCCESS");
         assertEquals("SUCCESS", order.getStatus());
 
     }
@@ -70,7 +70,7 @@ public class OrderTest {
     void testSetStatusToCancelled(){
         Order order = new Order("13652556-012a-4c07-b546-54eb1396d79b", this.products,
                 1708560000L,"Safira Sudarajat");
-        order.setStatus(OrderStatus.CANCELLED.getValue());
+        order.setStatus("CANCELLED");
         assertEquals("CANCELLED", order.getStatus());
     }
     @Test
