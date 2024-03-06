@@ -38,16 +38,16 @@ public interface PaymentData {
         return cashOnDeliveryKeys;
     }
 
-    public static HashMap<String, String> getNewVoucherCodeData(){
+    public static HashMap<String, String> getNewVoucherCodeData(String voucher){
         HashMap<String, String> result = new HashMap<String, String>();
-        result.put("voucherCode", "");
+        result.put("voucherCode", voucher);
         return result;
     }
 
-    public static HashMap<String, String> getNewCashOnDeliveryData(){
+    public static HashMap<String, String> getNewCashOnDeliveryData(String address, String fee){
         HashMap<String, String> result = new HashMap<String, String>();
-        result.put("address", "");
-        result.put("deliveryFee", "");
+        result.put("address", address);
+        result.put("deliveryFee", fee);
         return result;
     }
 }
