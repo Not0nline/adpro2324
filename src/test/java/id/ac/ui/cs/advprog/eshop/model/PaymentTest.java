@@ -91,6 +91,13 @@ public class PaymentTest {
     }
 
     @Test
+    void testCreatePaymentInvalidPaymentData(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            Payment payment = new Payment("id-1", "VOUCHER_CODE", paymentDataCashOnDelivery);
+        });
+    }
+
+    @Test
     void testEditPaymentWithCancelledStatus(){
         Payment payment = new Payment("id-1", "VOUCHER_CODE", paymentDataVoucherCode);
         payment.setStatus("CANCELLED");
