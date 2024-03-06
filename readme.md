@@ -48,3 +48,16 @@
   Contoh: Fungsi A butuh return value dari fungsi B, tapi fungsi B diubah jadi return value beda. Ini bikin fungsi A error. Harusnya tambah fitur baru, jangan ubah yang sudah ada.<br>
 - Kode susah diuji karena dependensi banyak.<br>
   Contoh: Program pakai banyak class yang saling tergantung. Ini bikin testing repot karena harus mocking banyak class. Harusnya kurangi dependensi, pisah program jadi lebih modular.
+
+
+<h1>Week 4</h1>
+
+1. Reflect based on Percival (2017) proposed self-reflective questions (in “Principles and Best Practice of Testing” submodule, chapter “Evaluating Your Testing Objectives”), whether this TDD flow is useful enough for you or not. If not, explain things that you need to do next time you make more tests.
+- Iya, alur TDD membantu saya agar pemrograman terarah walaupun akhirnya masih terdapat test yang kurang bagus
+
+2. You have created unit tests in Tutorial. Now reflect whether your tests have successfully followed F.I.R.S.T. principle or not. If not, explain things that you need to do the next time you create more tests.
+- Fast: Ya, test berjalan dengan cepat karena test tidak berukuran besar
+- Isolated: Tidak, berberapa test yang ada tidak isolated seperti ketika ingin melakukan test untuk product, seperti edit, delete, kita terlebih dahulu perlu melakukan create order
+- Repeatable: Ya, test semua berukuran sangat kecil sehingga dapat dibuat dengan mudah
+- Self validating: Ya, Test merepresentasikan kondisi sebenarnya dalam program
+- Thorough: Tidak, karena masih terdapat kesalahan dalam test dan belum terdapat code coverage 100% sehingga belum thorough
