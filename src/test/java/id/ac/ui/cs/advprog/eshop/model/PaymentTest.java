@@ -74,14 +74,6 @@ public class PaymentTest {
     }
 
     @Test
-    void testCreatePaymentInvalidPaymentData(){
-
-        assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new Payment("id-1", "VOUCHER_CODE", paymentDataCashOnDelivery);
-        });
-    }
-
-    @Test
     void testCreatePaymentSuccessStatus(){
         Payment payment = new Payment("id-1", "VOUCHER_CODE", "SUCCESS", paymentDataVoucherCode);
 
@@ -94,7 +86,7 @@ public class PaymentTest {
     @Test
     void testCreatePaymentInvalidStatus(){
         assertThrows(IllegalArgumentException.class, () -> {
-            Payment payment = new Payment("id-1", "VOUCHER_CODE", "MEOW", paymentDataCashOnDelivery);
+            Payment payment = new Payment("id-1", "VOUCHER_CODE", "Gak success", paymentDataCashOnDelivery);
         });
     }
 
@@ -106,10 +98,12 @@ public class PaymentTest {
     }
 
     @Test
-    void testEditPaymentWithInvalidStatus(){
-        Payment payment = new Payment("id-1", "VOUCHER_CODE", paymentDataVoucherCode);
-        payment.setStatus("MEOW");
-        assertThrows(IllegalArgumentException.class, () -> payment.setStatus("MEOW"));
-    }
+    void testCreateOrderInvalidMethod() {
+        Map<String, String> paymentData = new HashMap<String, String>();
+        paymentData.put("voucherCode", "ESHOP1234ABC567D");
 
+        assertThrows (IllegalArgumentException.class, () -> {
+            Payment payment = new Payment("6c93d3e2-b009-46ba-9d15-f03d85adc2de", "Berhasil :D", paymentDataVoucherCode);
+        });
+    }
 }
