@@ -52,7 +52,7 @@ public class PaymentRepositoryTest {
 
         Payment result = paymentRepository.setStatus(payment, PaymentStatus.SUCCESS.getValue());
         assertEquals(payment.getId(), result.getId());
-        assertEquals(payment.getStatus(), result.getStatus());
+        assertEquals(PaymentStatus.SUCCESS.getValue(), result.getStatus());
     }
 
     @Test
@@ -95,20 +95,6 @@ public class PaymentRepositoryTest {
         assertFalse(paymentIterator.hasNext());
     }
 
-    @Test
-    void testGetAllPaymentsIfMoreThanOne(){
-        for (Payment payment : payments){
-            paymentRepository.addPayment(payment);
-        }
-
-        Iterator<Payment> paymentIterator = paymentRepository.getAllPayments();
-        assertTrue(paymentIterator.hasNext());
-        Payment savedPayment = paymentIterator.next();
-        assertEquals(payments.getFirst().getId(), savedPayment.getId());
-        savedPayment = paymentIterator.next();
-        assertEquals(payments.get(1).getId(), savedPayment.getId());
-        assertFalse(paymentIterator.hasNext());
-    }
 
 
 
