@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-interface PaymentData {
+public interface PaymentData {
 
 
     public static boolean checkData(String method, HashMap<String, String> param) {
@@ -36,5 +36,18 @@ interface PaymentData {
         cashOnDeliveryKeys.add("deliveryFee");
 
         return cashOnDeliveryKeys;
+    }
+
+    public static HashMap<String, String> getNewVoucherCodeData(){
+        HashMap<String, String> result = new HashMap<String, String>();
+        result.put("voucherCode", "");
+        return result;
+    }
+
+    public static HashMap<String, String> getNewCashOnDeliveryData(){
+        HashMap<String, String> result = new HashMap<String, String>();
+        result.put("address", "");
+        result.put("deliveryFee", "");
+        return result;
     }
 }
