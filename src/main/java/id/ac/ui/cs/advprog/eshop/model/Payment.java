@@ -14,7 +14,13 @@ public class Payment {
     HashMap<String, String> paymentData;
 
     public Payment(String id, String method, String status, HashMap<String, String> paymentData) {
-        this(id, method, paymentData);
+        if(id == null){
+            UUID uuid = UUID.randomUUID();
+            this.id = (uuid.toString());
+        } else{
+            this.id = id;
+        }
+
         if (PaymentStatus.contains(status)) {
             this.status = status;
         } else {

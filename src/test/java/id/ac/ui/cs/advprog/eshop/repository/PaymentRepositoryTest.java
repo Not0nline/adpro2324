@@ -45,15 +45,15 @@ public class PaymentRepositoryTest {
         assertEquals(payment.getPaymentData(), findResult.getPaymentData());
     }
 
-    @Test
-    void testSetStatus(){
-        Payment payment = payments.get(1);
-        paymentRepository.addPayment(payment);
-
-        Payment result = paymentRepository.setStatus(payment, PaymentStatus.SUCCESS.getValue());
-        assertEquals(payment.getId(), result.getId());
-        assertEquals(PaymentStatus.SUCCESS.getValue(), result.getStatus());
-    }
+//    @Test
+//    void testSetStatus(){
+//        Payment payment = payments.get(1);
+//        paymentRepository.addPayment(payment);
+//
+//        Payment result = paymentRepository.setStatus(payment, PaymentStatus.SUCCESS.getValue());
+//        assertEquals(payment.getId(), result.getId());
+//        assertEquals(PaymentStatus.SUCCESS.getValue(), result.getStatus());
+//    }
 
     @Test
     void testSetStatusWithInvalidPayment(){

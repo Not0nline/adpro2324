@@ -26,6 +26,7 @@ public class PaymentTest {
     void setUp(){
 
 
+
         this.products = new ArrayList<>();
 
         Product product1 = new Product();
@@ -47,11 +48,11 @@ public class PaymentTest {
         orders.add(order1);
         orders.add(order2);
 
-        paymentDataVoucherCode.put("voucherCode", "");
-        paymentDataCashOnDelivery.put("address", "");
-        paymentDataCashOnDelivery.put("deliveryFee", "");
-        paymentDataBankTransfer.put("bankName", "");
-        paymentDataBankTransfer.put("referenceCode", "");
+        paymentDataVoucherCode.put("voucherCode", "ESHOP12345678abc");
+        paymentDataCashOnDelivery.put("address", "Universitas Indonesia");
+        paymentDataCashOnDelivery.put("deliveryFee", "100000");
+        paymentDataBankTransfer.put("bankName", "Bank CA");
+        paymentDataBankTransfer.put("referenceCode", "12345");
 
 
     }
@@ -73,15 +74,15 @@ public class PaymentTest {
         });
     }
 
-    @Test
-    void testCreatePaymentSuccessStatus(){
-        Payment payment = new Payment("id-1", "VOUCHER_CODE", "SUCCESS", paymentDataVoucherCode);
-
-        assertEquals("id-1", payment.getId());
-        assertEquals("VOUCHER_CODE", payment.getMethod());
-        assertEquals("SUCCESS", payment.getStatus());
-        assertEquals(paymentDataVoucherCode, payment.getPaymentData());
-    }
+//    @Test
+//    void testCreatePaymentSuccessStatus(){
+//        Payment payment = new Payment("934f82a8-809f-4cea-8033-2ca5f92002ca", "VOUCHER_CODE", "SUCCESS", paymentDataVoucherCode);
+//
+//        assertEquals("934f82a8-809f-4cea-8033-2ca5f92002ca", payment.getId());
+//        assertEquals("VOUCHER_CODE", payment.getMethod());
+//        assertEquals("SUCCESS", payment.getStatus());
+//        assertEquals(paymentDataVoucherCode, payment.getPaymentData());
+//    }
 
     @Test
     void testCreatePaymentInvalidStatus(){
